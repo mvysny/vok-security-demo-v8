@@ -31,5 +31,7 @@ class MyUITest : DynaTest({
         _get<Button> { caption = "Sign In" }._click()
         expect(true) { Session.loginManager.isLoggedIn }
         _expectNone<LoginView>()
+        // after successful login the WelcomeView should be displayed
+        _get<WelcomeView>()
     }
 })

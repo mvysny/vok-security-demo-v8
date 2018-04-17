@@ -13,12 +13,17 @@ import com.github.vok.security.AccessRejectedException
 import com.github.vokorm.deleteAll
 import com.vaadin.server.Page
 
+/**
+ * Mocks the UI and logs in given user.
+ */
 fun login(username: String) {
     MockVaadin.setup({ MyUI() })
     Session.loginManager.login(User.findByUsername(username)!!)
     Page.getCurrent().reload()
     // check that there is no LoginForm and everything is prepared
     _expectNone<LoginForm>()
+    // in fact, by default the WelcomeView should be displayed
+    _get<WelcomeView>()
 }
 
 class AdminViewTest : DynaTest({
