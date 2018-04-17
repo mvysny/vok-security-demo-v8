@@ -4,22 +4,25 @@ import com.github.karibu.testing.MockVaadin
 import com.github.karibu.testing._expectNone
 import com.github.karibu.testing._get
 import com.github.mvysny.dynatest.DynaTest
+import com.github.mvysny.dynatest.expectThrows
 import com.github.vok.framework.LoginForm
 import com.github.vok.framework.Session
+import com.github.vok.karibudsl.autoDiscoverViews
 import com.github.vok.karibudsl.navigateToView
+import com.github.vok.security.AccessRejectedException
 import com.github.vokorm.deleteAll
+import com.vaadin.server.Page
 
 fun login(username: String) {
-    MockVaadin.setup({
-        Session.loginManager.login(User.findByUsername(username)!!)
-        MyUI()
-    })
+    MockVaadin.setup({ MyUI() })
+    Session.loginManager.login(User.findByUsername(username)!!)
+    Page.getCurrent().reload()
     // check that there is no LoginForm and everything is prepared
     _expectNone<LoginForm>()
 }
 
 class AdminViewTest : DynaTest({
-    beforeGroup { Bootstrap().contextInitialized(null) }
+    beforeGroup { autoDiscoverViews("com.example.vok"); Bootstrap().contextInitialized(null) }
     afterGroup { User.deleteAll(); Bootstrap().contextDestroyed(null) }
 
     test("Admin should see AdminView properly") {
@@ -30,6 +33,8 @@ class AdminViewTest : DynaTest({
 
     test("User should not see AdminView") {
         login("user")
-        navigateToView<AdminView>()
+        expectThrows(AccessRejectedException::class, "Can not access AdminView, you are not admin") {
+            navigateToView<AdminView>()
+        }
     }
 })

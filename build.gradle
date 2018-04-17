@@ -43,6 +43,7 @@ subprojects {
 
     // for Travis to record failures: http://stackoverflow.com/questions/28614865/how-to-read-test-result-reports-on-travis-ci/28617954#28617954
     test {
+        useJUnitPlatform()
         testLogging {
             events "failed"
             exceptionFormat "full"

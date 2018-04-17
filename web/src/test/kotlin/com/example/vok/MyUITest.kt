@@ -3,6 +3,7 @@ package com.example.vok
 import com.github.karibu.testing.*
 import com.github.mvysny.dynatest.DynaTest
 import com.github.vok.framework.Session
+import com.github.vok.karibudsl.autoDiscoverViews
 import com.github.vokorm.deleteAll
 import com.vaadin.ui.Button
 import com.vaadin.ui.PasswordField
@@ -10,7 +11,7 @@ import com.vaadin.ui.TextField
 import kotlin.test.expect
 
 class MyUITest : DynaTest({
-    beforeGroup { Bootstrap().contextInitialized(null) }
+    beforeGroup { autoDiscoverViews("com.example.vok"); Bootstrap().contextInitialized(null) }
     afterGroup { User.deleteAll(); Bootstrap().contextDestroyed(null) }
     beforeEach { MockVaadin.setup({ MyUI() }) }
 
