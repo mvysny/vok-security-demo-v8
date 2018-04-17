@@ -40,13 +40,15 @@ login/logout functionality into single class). Then, the page is refreshed. This
 to create a new instance of the UI. Since a non-null user is in the session, the UI will show
 the application layout instead of the login form.
 
-There are three views:
+There are four views:
 
 * The [WelcomeView](web/src/main/kotlin/com/example/vok/WelcomeView.kt) which is accessible by all logged-in users;
 * The [UserView](web/src/main/kotlin/com/example/vok/UserView.kt) which is accessible by all users with roles `user` and `admin`
 * The [AdminView](web/src/main/kotlin/com/example/vok/AdminView.kt) which is accessible by users with the role of `admin` only
+* The [UserProfileView](web/src/main/kotlin/com/example/vok/UserProfileView.kt) which shows info about the currently logged-in user and is therefore accessible by
+  all logged-in users.
 
-The `MyUI` class also contains proper logic for catching and displaying `AccessRejectedException`s, by the means
+The `MyUI` class contains proper logic for catching and displaying `AccessRejectedException`s, by the means
 of installing the proper `ErrorHandler` into the UI. You can check the security being enforced, simply
 by running the project, logging in as an admin (user `admin`, password `admin`) and clicking on the "Admin"
 page (or visiting the [http://localhost:8080/admin](http://localhost:8080/admin) link).
