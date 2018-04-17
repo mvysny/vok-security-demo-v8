@@ -6,6 +6,7 @@ import com.github.vok.karibudsl.label
 import com.github.vok.security.AllowAllUsers
 import com.vaadin.navigator.View
 import com.vaadin.ui.VerticalLayout
+import com.vaadin.ui.themes.ValoTheme
 
 /**
  * The view will simply show the profile of the currently logged in user. Therefore, we can simply allow all users to see this view, since
@@ -16,6 +17,9 @@ import com.vaadin.ui.VerticalLayout
 class UserProfileView : VerticalLayout(), View {
     init {
         val user: User = Session.loginManager.user!!
+        label("${user.username}'s profile") {
+            styleName = ValoTheme.LABEL_H1
+        }
         label("User name: ${user.username}")
     }
 }
