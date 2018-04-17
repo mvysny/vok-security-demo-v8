@@ -4,6 +4,7 @@ import com.github.vok.framework.LoginForm
 import com.github.vok.framework.Session
 import com.github.vok.framework.VokSecurity
 import com.github.vok.karibudsl.*
+import com.github.vok.security.AccessRejectedException
 import com.vaadin.annotations.Theme
 import com.vaadin.annotations.Title
 import com.vaadin.navigator.Navigator
@@ -46,10 +47,11 @@ class MyUI : UI() {
                     addSeparator()
                     item("Sign Out", menuSelected = { Session.loginManager.logout() })
                 }
+                menuButton("Home", view = WelcomeView::class.java)
                 section("User+Admin")
-                menuButton("User", badge = "3")
+                menuButton("User", view = UserView::class.java)
                 section("Admin only")
-                menuButton("Admin")
+                menuButton("Admin", view = AdminView::class.java)
             }
         }
         setContent(content)
@@ -58,16 +60,31 @@ class MyUI : UI() {
         VokSecurity.install()
 
         setErrorHandler { e ->
+            // often the original exception (say, AccessRejectedException) is wrapped in InvocationTargetException and RpcInvocationException. Unwrap.
+            val cause: Throwable = e.throwable!!.originalCause()
+
             log.error("Vaadin UI uncaught exception ${e.throwable}", e.throwable)
-            // when the exception occurs, show a nice notification
-            Notification(
-                "Oops",
-                "An error occurred, and we are really sorry about that. Already working on the fix!",
-                Notification.Type.ERROR_MESSAGE
-            ).apply {
-                styleName = "${ValoTheme.NOTIFICATION_CLOSABLE} ${ValoTheme.NOTIFICATION_ERROR}"
-                position = Position.TOP_CENTER
-                show(Page.getCurrent())
+            if (cause is AccessRejectedException) {
+                Notification(
+                    "Access Denied",
+                    cause.message,
+                    Notification.Type.ERROR_MESSAGE
+                ).apply {
+                    styleName = "${ValoTheme.NOTIFICATION_CLOSABLE} ${ValoTheme.NOTIFICATION_ERROR}"
+                    position = Position.MIDDLE_CENTER
+                    show(Page.getCurrent())
+                }
+            } else {
+                // when the exception occurs, show a nice notification
+                Notification(
+                    "Oops",
+                    "An error occurred, and we are really sorry about that. Already working on the fix!",
+                    Notification.Type.ERROR_MESSAGE
+                ).apply {
+                    styleName = "${ValoTheme.NOTIFICATION_CLOSABLE} ${ValoTheme.NOTIFICATION_ERROR}"
+                    position = Position.TOP_CENTER
+                    show(Page.getCurrent())
+                }
             }
         }
     }
@@ -85,11 +102,11 @@ class LoginView : VerticalLayout() {
             override fun doLogin(username: String, password: String) {
                 val user = User.findByUsername(username)
                 if (user == null) {
-                    this.username.componentError = UserError("The user does not exist")
+                    usernameField.componentError = UserError("The user does not exist")
                     return
                 }
                 if (!user.passwordMatches(password)) {
-                    this.password.componentError = UserError("Invalid password")
+                    passwordField.componentError = UserError("Invalid password")
                     return
                 }
                 Session.loginManager.login(user)
@@ -99,3 +116,5 @@ class LoginView : VerticalLayout() {
         loginForm.alignment = Alignment.MIDDLE_CENTER
     }
 }
+
+fun Throwable.originalCause(): Throwable = cause?.originalCause() ?: this

@@ -1,17 +1,16 @@
 package com.example.vok
 
 import com.github.vok.karibudsl.*
-import com.github.vok.security.HasRoles
+import com.github.vok.security.AllowAllUsers
 import com.vaadin.navigator.View
 import com.vaadin.navigator.ViewChangeListener
-import com.vaadin.server.ThemeResource
 import com.vaadin.shared.Version
 import com.vaadin.ui.Alignment
 import com.vaadin.ui.VerticalLayout
 import com.vaadin.ui.themes.ValoTheme
 
 @AutoView("")
-@HasRoles
+@AllowAllUsers
 class WelcomeView: VerticalLayout(), View {
     init {
         setSizeFull()
