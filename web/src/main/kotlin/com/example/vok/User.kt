@@ -9,7 +9,8 @@ import com.vaadin.server.Page
 import java.io.Serializable
 
 /**
- * Represents an user. Implements the [HasPassword] helper interface which provides password hashing functionality. Remember to set the
+ * Represents an user. Stored in a database; see [Entity] and [Accessing Databases](http://www.vaadinonkotlin.eu/databases.html) for more details.
+ * Implements the [HasPassword] helper interface which provides password hashing functionality. Remember to set the
  * password via [HasPassword.setPassword] and verify the password via [HasPassword.passwordMatches].
  * @property username user name, unique
  * @property roles comma-separated list of roles

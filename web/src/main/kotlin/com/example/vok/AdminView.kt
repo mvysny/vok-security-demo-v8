@@ -8,6 +8,9 @@ import com.vaadin.navigator.View
 import com.vaadin.ui.VerticalLayout
 import com.vaadin.ui.themes.ValoTheme
 
+/**
+ * The Administration view which only administrators may access. The administrator should be able to see/edit the list of users.
+ */
 @AutoView
 @AllowRoles("admin")
 class AdminView : VerticalLayout(), View {
