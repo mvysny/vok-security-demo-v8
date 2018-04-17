@@ -32,7 +32,8 @@ There are two users pre-created by the [Bootstrap](web/src/main/kotlin/com/examp
 The [MyUI](web/src/main/kotlin/com/example/vok/MyUI.kt) is configured to show a full-screen
 login form (provided for us by the Vaadin-on-Kotlin as [LoginForm](https://github.com/mvysny/vaadin-on-kotlin/blob/master/vok-util-vaadin8/src/main/kotlin/com/github/vok/framework/VokSecurity.kt) class).
 The username and password are compared against the database. The `User` class takes advantage
-of the `HasPassword` mixin which makes sure to store the passwords in a hashed form.
+of the [HasPassword](https://github.com/mvysny/vaadin-on-kotlin/blob/master/vok-security/src/main/kotlin/com/github/vok/security/simple/HasPassword.kt)
+mixin which makes sure to store the passwords in a hashed form.
 
 If the login succeeds, the user is then stored into the session (or, rather, the `LoginManager` class
 is stored in the session along with the currently logged-in user. This way, we can group all
