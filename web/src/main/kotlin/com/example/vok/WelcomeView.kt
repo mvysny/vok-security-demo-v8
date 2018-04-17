@@ -9,6 +9,9 @@ import com.vaadin.ui.Alignment
 import com.vaadin.ui.VerticalLayout
 import com.vaadin.ui.themes.ValoTheme
 
+/**
+ * A view which can be seen by all logged-in users.
+ */
 @AutoView("")
 @AllowAllUsers
 class WelcomeView: VerticalLayout(), View {

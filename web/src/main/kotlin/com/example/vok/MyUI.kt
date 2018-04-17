@@ -22,7 +22,8 @@ import com.vaadin.ui.themes.ValoTheme
 import org.slf4j.LoggerFactory
 
 /**
- * The Vaadin UI which demoes all the features. If not familiar with Vaadin, please check out the Vaadin tutorial first.
+ * This app offers no contents for logged-out users. Therefore we can simply ask the user to log in right away after the UI is created.
+ * See the [init] method for more details.
  * @author mvy
  */
 @Theme("valo")
@@ -34,6 +35,9 @@ class MyUI : UI() {
 
     override fun init(request: VaadinRequest?) {
         if (!Session.loginManager.isLoggedIn) {
+            // If no user is logged in, then simply show the LoginView (a full-screen login form) and bail out.
+            // When the user logs in, we will simply reload the page, which recreates the UI instance; since the user is stored in a session
+            // and therefore logged in, the code will skip this block and will initialize the UI properly.
             setContent(LoginView())
             return
         }
@@ -42,15 +46,13 @@ class MyUI : UI() {
             appTitle = "<strong>Penny's Shop</strong>"
             userMenu {
                 item(Session.loginManager.user!!.username) {
-                    item("Edit Profile")
+                    item("Edit Profile", menuSelected = { navigateToView<UserProfileView>() })
                     item("Preferences")
                     addSeparator()
                     item("Sign Out", menuSelected = { Session.loginManager.logout() })
                 }
                 menuButton("Home", view = WelcomeView::class.java)
-                section("User+Admin")
                 menuButton("User", view = UserView::class.java)
-                section("Admin only")
                 menuButton("Admin", view = AdminView::class.java)
             }
         }
@@ -60,10 +62,12 @@ class MyUI : UI() {
         VokSecurity.install()
 
         setErrorHandler { e ->
+            log.error("Vaadin UI uncaught exception ${e.throwable}", e.throwable)
+
             // often the original exception (say, AccessRejectedException) is wrapped in InvocationTargetException and RpcInvocationException. Unwrap.
             val cause: Throwable = e.throwable!!.originalCause()
 
-            log.error("Vaadin UI uncaught exception ${e.throwable}", e.throwable)
+            // if the exception is indeed the AccessRejectedException, handle it in a special way: show an Access Denied error message.
             if (cause is AccessRejectedException) {
                 Notification(
                     "Access Denied",
@@ -75,7 +79,7 @@ class MyUI : UI() {
                     show(Page.getCurrent())
                 }
             } else {
-                // when the exception occurs, show a nice notification
+                // just a generic error. Show a generic Oops error notification.
                 Notification(
                     "Oops",
                     "An error occurred, and we are really sorry about that. Already working on the fix!",
