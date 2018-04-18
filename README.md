@@ -26,8 +26,8 @@ views that could be accessed publicly, therefore the user must log in first, in 
 
 There are two users pre-created by the [Bootstrap](web/src/main/kotlin/com/example/vok/Bootstrap.kt) class:
 
-* The 'user' user with the password of 'user' and the role of 'user'
-* The 'admin' user with the password of 'admin' and the role of 'admin'
+* The 'user' user with the password of 'user' and the role of `user`
+* The 'admin' user with the password of 'admin' and two roles: `admin` and `user`
 
 The [MyUI](web/src/main/kotlin/com/example/vok/MyUI.kt) is configured to show a full-screen
 login form (provided for us by the Vaadin-on-Kotlin as [LoginForm](https://github.com/mvysny/vaadin-on-kotlin/blob/master/vok-util-vaadin8/src/main/kotlin/com/github/vok/framework/VokSecurity.kt) class).
@@ -45,7 +45,7 @@ There are four views:
 
 * The [WelcomeView](web/src/main/kotlin/com/example/vok/WelcomeView.kt) which is accessible by all logged-in users;
 * The [UserView](web/src/main/kotlin/com/example/vok/UserView.kt) which is accessible by all users with roles `user` and `admin`
-* The [AdminView](web/src/main/kotlin/com/example/vok/AdminView.kt) which is accessible by users with the role of `admin` only
+* The [AdminView](web/src/main/kotlin/com/example/vok/AdminView.kt) which is accessible by users with the `admin` role only
 * The [UserProfileView](web/src/main/kotlin/com/example/vok/UserProfileView.kt) which shows info about the currently logged-in user and is therefore accessible by
   all logged-in users.
 
