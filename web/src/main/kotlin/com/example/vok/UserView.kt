@@ -8,6 +8,9 @@ import com.vaadin.navigator.ViewChangeListener
 import com.vaadin.ui.VerticalLayout
 import com.vaadin.ui.themes.ValoTheme
 
+/**
+ * Demoes a view intended for both users and admins.
+ */
 @AutoView
 @AllowRoles("user", "admin")
 class UserView : VerticalLayout(), View {

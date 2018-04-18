@@ -98,6 +98,10 @@ class MyUI : UI() {
     }
 }
 
+/**
+ * A full-screen login view which shows the [LoginForm]. On successful login saves the user to the session and reloads
+ * the page, this re-creates the UI instance which will now draw the proper screen contents (the ValoMenu)
+ */
 class LoginView : VerticalLayout() {
     init {
         setSizeFull()

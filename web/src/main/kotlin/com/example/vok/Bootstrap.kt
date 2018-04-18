@@ -23,7 +23,8 @@ import javax.servlet.annotation.WebServlet
  * * Makes sure that the database is up-to-date, by running migration scripts with Flyway. This will work even in cluster as Flyway
  *   automatically obtains a cluster-wide database lock.
  * * Initializes the VaadinOnKotlin framework.
- * * Maps Vaadin to `/`, maps REST server to `/rest`
+ * * Configures the loggedInUserResolver so that the security framework knows whether there is an user logged in and which one
+ * * Pre-creates two users: user/user and admin/admin
  * @author mvy
  */
 @WebListener
