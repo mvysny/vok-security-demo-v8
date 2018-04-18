@@ -3,7 +3,6 @@ package com.example.vok
 import com.github.vok.karibudsl.*
 import com.github.vok.security.AllowAllUsers
 import com.vaadin.navigator.View
-import com.vaadin.navigator.ViewChangeListener
 import com.vaadin.shared.Version
 import com.vaadin.ui.Alignment
 import com.vaadin.ui.VerticalLayout
@@ -29,8 +28,6 @@ class WelcomeView: VerticalLayout(), View {
             label { html("<strong>Kotlin version: </strong> ${KotlinVersion.CURRENT}") }
             label { html("<strong>JVM version: </strong> $jvmVersion") }
         }
-    }
-    override fun enter(event: ViewChangeListener.ViewChangeEvent) {
     }
 }
 
