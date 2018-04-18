@@ -26,6 +26,9 @@ fun login(username: String) {
     _get<WelcomeView>()
 }
 
+/**
+ * Uses the [Karibu-Testing](https://github.com/mvysny/karibu-testing) library to test Vaadin-based apps.
+ */
 class AdminViewTest : DynaTest({
     beforeGroup { autoDiscoverViews("com.example.vok"); Bootstrap().contextInitialized(null) }
     afterGroup { User.deleteAll(); Bootstrap().contextDestroyed(null) }

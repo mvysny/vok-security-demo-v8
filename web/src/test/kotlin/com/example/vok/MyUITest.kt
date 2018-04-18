@@ -10,6 +10,9 @@ import com.vaadin.ui.PasswordField
 import com.vaadin.ui.TextField
 import kotlin.test.expect
 
+/**
+ * Uses the [Karibu-Testing](https://github.com/mvysny/karibu-testing) library to test Vaadin-based apps.
+ */
 class MyUITest : DynaTest({
     beforeGroup { autoDiscoverViews("com.example.vok"); Bootstrap().contextInitialized(null) }
     afterGroup { User.deleteAll(); Bootstrap().contextDestroyed(null) }
