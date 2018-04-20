@@ -3,6 +3,7 @@ package com.example.vok
 import com.github.vok.framework.LoginForm
 import com.github.vok.framework.Session
 import com.github.vok.framework.VokSecurity
+import com.github.vok.framework.loginForm
 import com.github.vok.karibudsl.*
 import com.github.vok.security.AccessRejectedException
 import com.vaadin.annotations.Theme
@@ -105,23 +106,21 @@ class MyUI : UI() {
 class LoginView : VerticalLayout() {
     init {
         setSizeFull()
-        val loginForm = object : LoginForm("VoK Security Demo") {
-            override fun doLogin(username: String, password: String) {
+        loginForm("VoK Security Demo") {
+            alignment = Alignment.MIDDLE_CENTER
+            (content as VerticalLayout).label("Log in as user/user or admin/admin")
+
+            onLogin { username, password ->
                 val user = User.findByUsername(username)
                 if (user == null) {
                     usernameField.componentError = UserError("The user does not exist")
-                    return
-                }
-                if (!user.passwordMatches(password)) {
+                } else if (!user.passwordMatches(password)) {
                     passwordField.componentError = UserError("Invalid password")
-                    return
+                } else {
+                    Session.loginManager.login(user)
                 }
-                Session.loginManager.login(user)
             }
         }
-        (loginForm.content as VerticalLayout).label("Log in as user/user or admin/admin")
-        addComponent(loginForm)
-        loginForm.alignment = Alignment.MIDDLE_CENTER
     }
 }
 

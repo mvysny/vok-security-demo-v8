@@ -22,7 +22,7 @@ The app will be running on [http://localhost:8080/](http://localhost:8080/).
 
 The application uses the username+password authorization, with users stored in an in-memory H2 SQL database
 (the [User](web/src/main/kotlin/com/example/vok/User.kt) class). There are no
-views that could be accessed publicly, therefore the user must log in first, in order to see the app.
+views that could be accessed publicly - the user must always log in first, in order to see any part of the app.
 
 There are two users pre-created by the [Bootstrap](web/src/main/kotlin/com/example/vok/Bootstrap.kt) class:
 
