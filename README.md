@@ -38,7 +38,7 @@ mixin which makes sure to store the passwords in a hashed form.
 If the login succeeds, the user is then stored into the session (or, rather, the `LoginManager` class
 is stored in the session along with the currently logged-in user. This way, we can group all
 login/logout functionality into single class). Then, the page is refreshed. This forces Vaadin
-to create a new instance of the UI. Since a non-null user is in the session, the UI will show
+to create a new instance of the UI. Since a non-null user is now in the session, the UI will show
 the application layout instead of the login form.
 
 There are four views:
