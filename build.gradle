@@ -16,6 +16,9 @@ defaultTasks 'clean', 'build'
 allprojects {
     group 'com.example.vok'
     version '1.0-SNAPSHOT'
+
+    // Heroku
+    task stage(dependsOn: ['build'])
 }
 
 subprojects {

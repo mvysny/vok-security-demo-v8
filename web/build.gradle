@@ -37,4 +37,16 @@ dependencies {
     // test
     testCompile("com.github.mvysny.dynatest:dynatest:0.8")
     testCompile "com.github.kaributesting:karibu-testing-v8:0.4.10"
+
+    // heroku app runner
+    testRuntime 'com.github.jsimone:webapp-runner:8.5.11.3'
 }
+
+task copyToLib(type: Copy) {
+    into "$buildDir/server"
+    from(configurations.testRuntime) {
+        include "webapp-runner*"
+    }
+}
+
+stage.dependsOn(copyToLib)
