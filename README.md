@@ -19,6 +19,8 @@ cd vok-security-demo
 
 The app will be running on [http://localhost:8080/](http://localhost:8080/).
 
+The app is running live on Heroku at [https://vok-security-demo.herokuapp.com](https://vok-security-demo.herokuapp.com).
+
 ## About the application
 
 The application uses the username+password authorization, with users stored in an in-memory H2 SQL database
