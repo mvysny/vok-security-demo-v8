@@ -1,5 +1,5 @@
 buildscript {
-    ext.vok_version = '0.4.13'
+    ext.vok_version = '0.4.15'
 }
 
 plugins {
