@@ -36,7 +36,7 @@ dependencies {
 
     // test
     testCompile("com.github.mvysny.dynatest:dynatest:0.9")
-    testCompile "com.github.kaributesting:karibu-testing-v8:0.4.16"
+    testCompile "com.github.kaributesting:karibu-testing-v8:0.4.17"
 
     // heroku app runner
     testRuntime 'com.github.jsimone:webapp-runner:9.0.11.0'
