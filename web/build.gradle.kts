@@ -1,7 +1,8 @@
-apply plugin: "war"
-apply plugin: "org.gretty"
-// commented out until this is resolved: https://github.com/johndevs/gradle-vaadin-plugin/issues/501
-// apply plugin: 'com.devsoap.plugin.vaadin'
+plugins {
+    war
+    id("org.gretty")
+    id("com.devsoap.plugin.vaadin")
+}
 
 gretty {
     contextPath = "/"
@@ -9,11 +10,13 @@ gretty {
 }
 
 vaadin {
-    version vaadin8_version
+    version = properties["vaadin8_version"] as String
 }
 
+val staging by configurations.creating
+
 dependencies {
-    compile("com.github.vaadinonkotlin:vok-framework-sql2o:$vok_version")
+    compile("com.github.vaadinonkotlin:vok-framework-sql2o:${ext["vok_version"]}")
 
     // logging
     // currently we are logging through the SLF4J API to LogBack. See logback.xml file for the logger configuration
@@ -23,9 +26,9 @@ dependencies {
     compile("org.slf4j:jul-to-slf4j:1.7.25")
 
     // workaround until https://youtrack.jetbrains.com/issue/IDEA-178071 is fixed
-    compile("com.vaadin:vaadin-themes:${vaadin.version}")
-    compile("com.vaadin:vaadin-server:${vaadin.version}")
-    compile("com.vaadin:vaadin-client-compiled:${vaadin.version}")
+    compile("com.vaadin:vaadin-themes:${ext["vaadin8_version"]}")
+    compile("com.vaadin:vaadin-server:${ext["vaadin8_version"]}")
+    compile("com.vaadin:vaadin-client-compiled:${ext["vaadin8_version"]}")
     providedCompile("javax.servlet:javax.servlet-api:3.1.0")
 
     // db
@@ -40,14 +43,18 @@ dependencies {
     testCompile("com.github.kaributesting:karibu-testing-v8:0.5.1")
 
     // heroku app runner
-    testRuntime("com.github.jsimone:webapp-runner:9.0.11.0")
+    staging("com.github.jsimone:webapp-runner:9.0.11.0")
 }
 
-task copyToLib(type: Copy) {
-    into "$buildDir/server"
-    from(configurations.testRuntime) {
-        include "webapp-runner*"
+// Heroku
+tasks {
+    val copyToLib by registering(Copy::class) {
+        into("$buildDir/server")
+        from(staging) {
+            include("webapp-runner*")
+        }
+    }
+    "stage" {
+        dependsOn("build", copyToLib)
     }
 }
-
-stage.dependsOn(copyToLib)
