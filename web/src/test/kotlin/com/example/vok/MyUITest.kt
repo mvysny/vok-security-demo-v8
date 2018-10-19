@@ -17,6 +17,7 @@ class MyUITest : DynaTest({
     beforeGroup { autoDiscoverViews("com.example.vok"); Bootstrap().contextInitialized(null) }
     afterGroup { User.deleteAll(); Bootstrap().contextDestroyed(null) }
     beforeEach { MockVaadin.setup({ MyUI() }) }
+    afterEach { MockVaadin.tearDown() }
 
     test("unsuccessful login") {
         _get<LoginView>() // check that initially the LoginView is displayed

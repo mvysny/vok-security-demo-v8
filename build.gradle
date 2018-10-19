@@ -5,15 +5,15 @@ buildscript {
 plugins {
     id "org.jetbrains.kotlin.jvm" version "1.2.71"
     // need to use Gretty here because of https://github.com/johndevs/gradle-vaadin-plugin/issues/317
-    id "org.gretty" version "2.2.0"
-    id 'com.devsoap.plugin.vaadin' version '1.4.1'
+    id("org.gretty") version "2.2.0"
+    id("com.devsoap.plugin.vaadin") version '1.4.1'
 }
 
-defaultTasks 'clean', 'build'
+defaultTasks("clean", "build")
 
 allprojects {
-    group 'com.example.vok'
-    version '1.0-SNAPSHOT'
+    group "com.example.vok"
+    version "1.0-SNAPSHOT"
 
     // Heroku
     task stage(dependsOn: ['build'])
@@ -23,7 +23,7 @@ subprojects {
 
     repositories {
         jcenter()
-        maven { url "https://dl.bintray.com/mvysny/github" }
+        maven { setUrl("https://dl.bintray.com/mvysny/github") }
     }
 
     apply plugin: 'kotlin'

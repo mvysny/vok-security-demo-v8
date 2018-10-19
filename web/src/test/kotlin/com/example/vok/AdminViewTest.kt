@@ -17,7 +17,6 @@ import com.vaadin.server.Page
  * Mocks the UI and logs in given user.
  */
 fun login(username: String) {
-    MockVaadin.setup({ MyUI() })
     Session.loginManager.login(User.findByUsername(username)!!)
     Page.getCurrent().reload()
     // check that there is no LoginForm and everything is prepared
@@ -32,6 +31,8 @@ fun login(username: String) {
 class AdminViewTest : DynaTest({
     beforeGroup { autoDiscoverViews("com.example.vok"); Bootstrap().contextInitialized(null) }
     afterGroup { User.deleteAll(); Bootstrap().contextDestroyed(null) }
+    beforeEach { MockVaadin.setup({ MyUI() }) }
+    afterEach { MockVaadin.tearDown() }
 
     test("Admin should see AdminView properly") {
         login("admin")
