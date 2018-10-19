@@ -9,7 +9,7 @@ gretty {
 }
 
 vaadin {
-    version "8.5.2"
+    version vaadin8_version
 }
 
 dependencies {
