@@ -111,13 +111,8 @@ class LoginView : VerticalLayout() {
             (content as VerticalLayout).label("Log in as user/user or admin/admin")
 
             onLogin { username, password ->
-                val user = User.findByUsername(username)
-                if (user == null) {
-                    usernameField.componentError = UserError("The user does not exist")
-                } else if (!user.passwordMatches(password)) {
-                    passwordField.componentError = UserError("Invalid password")
-                } else {
-                    Session.loginManager.login(user)
+                if (!Session.loginManager.login(username, password)) {
+                    usernameField.componentError = UserError("The user does not exist or invalid password")
                 }
             }
         }

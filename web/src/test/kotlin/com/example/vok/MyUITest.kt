@@ -5,9 +5,11 @@ import com.github.mvysny.dynatest.DynaTest
 import com.github.vok.framework.Session
 import com.github.vok.karibudsl.autoDiscoverViews
 import com.github.vokorm.deleteAll
+import com.vaadin.server.ErrorMessage
 import com.vaadin.ui.Button
 import com.vaadin.ui.PasswordField
 import com.vaadin.ui.TextField
+import org.jsoup.Jsoup
 import kotlin.test.expect
 
 /**
@@ -25,7 +27,7 @@ class MyUITest : DynaTest({
         _get<PasswordField> { caption = "Password" }._value = "invalidpass"
         _get<Button> { caption = "Sign In" }._click()
         expect(false) { Session.loginManager.isLoggedIn }
-        expect("The&#32;user&#32;does&#32;not&#32;exist") { _get<TextField> { caption = "Username" }.componentError.formattedHtmlMessage }
+        expect("The user does not exist or invalid password") { _get<TextField> { caption = "Username" }.componentError.message }
     }
 
     test("successful login") {
@@ -39,3 +41,9 @@ class MyUITest : DynaTest({
         _get<WelcomeView>()
     }
 })
+
+/**
+ * Unescapes [ErrorMessage.getFormattedHtmlMessage] and converts it to sane string. E.g.
+ * `The&#32;user&#32;does&#32;not&#32;exist` is converted to `The user does not exist`.
+ */
+val ErrorMessage.message: String get() = Jsoup.parse(formattedHtmlMessage).text()

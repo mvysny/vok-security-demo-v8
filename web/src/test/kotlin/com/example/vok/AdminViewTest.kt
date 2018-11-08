@@ -12,12 +12,13 @@ import com.github.vok.karibudsl.navigateToView
 import com.github.vok.security.AccessRejectedException
 import com.github.vokorm.deleteAll
 import com.vaadin.server.Page
+import kotlin.test.expect
 
 /**
  * Mocks the UI and logs in given user.
  */
 fun login(username: String) {
-    Session.loginManager.login(User.findByUsername(username)!!)
+    expect(true) { Session.loginManager.login(username, username) }
     Page.getCurrent().reload()
     // check that there is no LoginForm and everything is prepared
     _expectNone<LoginForm>()

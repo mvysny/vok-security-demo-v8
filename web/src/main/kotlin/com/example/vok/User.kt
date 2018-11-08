@@ -6,6 +6,7 @@ import com.github.vokorm.Dao
 import com.github.vokorm.Entity
 import com.github.vokorm.findSpecificBy
 import com.vaadin.server.Page
+import com.vaadin.server.UserError
 import java.io.Serializable
 
 /**
@@ -43,10 +44,17 @@ class LoginManager: Serializable {
      */
     val isLoggedIn: Boolean get() = user != null
 
+    fun login(username: String, password: String): Boolean {
+        val user = User.findByUsername(username) ?: return false
+        if (!user.passwordMatches(password)) return false
+        login(user)
+        return true
+    }
+
     /**
      * Logs in an [user]. Fails if the user is already logged in.
      */
-    fun login(user: User) {
+    private fun login(user: User) {
         check(this.user == null) { "An user is already logged in" }
         this.user = user
         // this will cause the UI to be re-created. Since the user is now logged in and present in the session,
@@ -62,6 +70,11 @@ class LoginManager: Serializable {
         // The UI is recreated by the page reload, and since there is no user in the session (since it has been cleared),
         // the UI will show the LoginView.
         Page.getCurrent().reload()
+    }
+
+    fun getCurrentUserRoles(): Set<String> {
+        val roles = user?.roles ?: return setOf()
+        return roles.split(",").toSet()
     }
 }
 
