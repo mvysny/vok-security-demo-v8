@@ -76,6 +76,10 @@ class LoginManager: Serializable {
         val roles = user?.roles ?: return setOf()
         return roles.split(",").toSet()
     }
+
+    fun isUserInRole(role: String): Boolean = getCurrentUserRoles().contains(role)
+
+    fun isAdmin(): Boolean = isUserInRole("admin")
 }
 
 /**
