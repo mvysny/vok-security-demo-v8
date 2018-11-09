@@ -2,7 +2,7 @@ package com.example.vok
 
 import com.github.vok.framework.sql2o.vaadin.dataProvider
 import com.github.vok.framework.sql2o.vaadin.generateFilterComponents
-import com.github.vok.karibudsl.*
+import com.github.mvysny.karibudsl.v8.*
 import com.github.vok.security.AllowRoles
 import com.vaadin.navigator.View
 import com.vaadin.ui.VerticalLayout

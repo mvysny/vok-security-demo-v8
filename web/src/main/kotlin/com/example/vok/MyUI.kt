@@ -4,7 +4,7 @@ import com.github.vok.framework.LoginForm
 import com.github.vok.framework.Session
 import com.github.vok.framework.VokSecurity
 import com.github.vok.framework.loginForm
-import com.github.vok.karibudsl.*
+import com.github.mvysny.karibudsl.v8.*
 import com.github.vok.security.AccessRejectedException
 import com.vaadin.annotations.Theme
 import com.vaadin.annotations.Title

@@ -5,8 +5,8 @@ import com.github.mvysny.dynatest.DynaTest
 import com.github.mvysny.dynatest.expectThrows
 import com.github.vok.framework.LoginForm
 import com.github.vok.framework.Session
-import com.github.vok.karibudsl.autoDiscoverViews
-import com.github.vok.karibudsl.navigateToView
+import com.github.mvysny.karibudsl.v8.autoDiscoverViews
+import com.github.mvysny.karibudsl.v8.navigateToView
 import com.github.vok.security.AccessRejectedException
 import com.github.vokorm.deleteAll
 import com.vaadin.server.Page

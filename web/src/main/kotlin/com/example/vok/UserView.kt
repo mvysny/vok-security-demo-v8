@@ -1,7 +1,7 @@
 package com.example.vok
 
-import com.github.vok.karibudsl.AutoView
-import com.github.vok.karibudsl.label
+import com.github.mvysny.karibudsl.v8.AutoView
+import com.github.mvysny.karibudsl.v8.label
 import com.github.vok.security.AllowRoles
 import com.vaadin.navigator.View
 import com.vaadin.ui.VerticalLayout

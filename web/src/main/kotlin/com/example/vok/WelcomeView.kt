@@ -1,6 +1,6 @@
 package com.example.vok
 
-import com.github.vok.karibudsl.*
+import com.github.mvysny.karibudsl.v8.*
 import com.github.vok.security.AllowAllUsers
 import com.vaadin.navigator.View
 import com.vaadin.shared.Version
