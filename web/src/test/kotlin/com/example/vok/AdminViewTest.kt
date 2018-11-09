@@ -1,8 +1,6 @@
 package com.example.vok
 
-import com.github.karibu.testing.MockVaadin
-import com.github.karibu.testing._expectNone
-import com.github.karibu.testing._get
+import com.github.mvysny.kaributesting.v8.*
 import com.github.mvysny.dynatest.DynaTest
 import com.github.mvysny.dynatest.expectThrows
 import com.github.vok.framework.LoginForm
