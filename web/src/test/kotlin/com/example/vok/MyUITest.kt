@@ -1,6 +1,6 @@
 package com.example.vok
 
-import com.github.karibu.testing.*
+import com.github.mvysny.kaributesting.v8.*
 import com.github.mvysny.dynatest.DynaTest
 import com.github.vok.framework.Session
 import com.github.vok.karibudsl.autoDiscoverViews

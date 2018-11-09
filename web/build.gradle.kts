@@ -40,7 +40,7 @@ dependencies {
 
     // test
     testCompile("com.github.mvysny.dynatest:dynatest-engine:0.11")
-    testCompile("com.github.kaributesting:karibu-testing-v8:0.5.4")
+    testCompile("com.github.mvysny.kaributesting:karibu-testing-v8:1.0.0")
 
     // heroku app runner
     staging("com.github.jsimone:webapp-runner:9.0.11.0")
