@@ -1,12 +1,12 @@
 package com.example.vok
 
-import com.github.vok.framework.sql2o.vaadin.dataProvider
-import com.github.vok.framework.sql2o.vaadin.generateFilterComponents
 import com.github.mvysny.karibudsl.v8.*
-import com.github.vok.security.AllowRoles
 import com.vaadin.navigator.View
 import com.vaadin.ui.VerticalLayout
 import com.vaadin.ui.themes.ValoTheme
+import eu.vaadinonkotlin.security.AllowRoles
+import eu.vaadinonkotlin.vaadin8.sql2o.dataProvider
+import eu.vaadinonkotlin.vaadin8.sql2o.generateFilterComponents
 
 /**
  * The Administration view which only administrators may access. The administrator should be able to see/edit the list of users.

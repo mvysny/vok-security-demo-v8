@@ -3,13 +3,13 @@ package com.example.vok
 import com.github.mvysny.kaributesting.v8.*
 import com.github.mvysny.dynatest.DynaTest
 import com.github.mvysny.dynatest.expectThrows
-import com.github.vok.framework.LoginForm
-import com.github.vok.framework.Session
 import com.github.mvysny.karibudsl.v8.autoDiscoverViews
 import com.github.mvysny.karibudsl.v8.navigateToView
-import com.github.vok.security.AccessRejectedException
 import com.github.vokorm.deleteAll
 import com.vaadin.server.Page
+import eu.vaadinonkotlin.security.AccessRejectedException
+import eu.vaadinonkotlin.vaadin8.LoginForm
+import eu.vaadinonkotlin.vaadin8.Session
 import kotlin.test.expect
 
 /**

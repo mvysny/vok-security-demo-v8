@@ -1,11 +1,6 @@
 package com.example.vok
 
-import com.github.vok.framework.LoginForm
-import com.github.vok.framework.Session
-import com.github.vok.framework.VokSecurity
-import com.github.vok.framework.loginForm
 import com.github.mvysny.karibudsl.v8.*
-import com.github.vok.security.AccessRejectedException
 import com.vaadin.annotations.Theme
 import com.vaadin.annotations.Title
 import com.vaadin.navigator.Navigator
@@ -20,6 +15,10 @@ import com.vaadin.ui.Notification
 import com.vaadin.ui.UI
 import com.vaadin.ui.VerticalLayout
 import com.vaadin.ui.themes.ValoTheme
+import eu.vaadinonkotlin.security.AccessRejectedException
+import eu.vaadinonkotlin.vaadin8.Session
+import eu.vaadinonkotlin.vaadin8.VokSecurity
+import eu.vaadinonkotlin.vaadin8.loginForm
 import org.slf4j.LoggerFactory
 
 /**
@@ -100,7 +99,7 @@ class MyUI : UI() {
 }
 
 /**
- * A full-screen login view which shows the [LoginForm]. On successful login saves the user to the session and reloads
+ * A full-screen login view which shows the [loginForm]. On successful login saves the user to the session and reloads
  * the page, this re-creates the UI instance which will now draw the proper screen contents (the ValoMenu)
  */
 class LoginView : VerticalLayout() {

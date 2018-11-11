@@ -16,7 +16,7 @@ vaadin {
 val staging by configurations.creating
 
 dependencies {
-    compile("com.github.vaadinonkotlin:vok-framework-sql2o:${ext["vok_version"]}")
+    compile("eu.vaadinonkotlin:vok-framework-sql2o:${ext["vok_version"]}")
 
     // logging
     // currently we are logging through the SLF4J API to LogBack. See logback.xml file for the logger configuration

@@ -2,13 +2,13 @@ package com.example.vok
 
 import com.github.mvysny.kaributesting.v8.*
 import com.github.mvysny.dynatest.DynaTest
-import com.github.vok.framework.Session
 import com.github.mvysny.karibudsl.v8.autoDiscoverViews
 import com.github.vokorm.deleteAll
 import com.vaadin.server.ErrorMessage
 import com.vaadin.ui.Button
 import com.vaadin.ui.PasswordField
 import com.vaadin.ui.TextField
+import eu.vaadinonkotlin.vaadin8.Session
 import org.jsoup.Jsoup
 import kotlin.test.expect
 

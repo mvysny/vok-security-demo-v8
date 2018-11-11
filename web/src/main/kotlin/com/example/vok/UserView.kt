@@ -2,10 +2,10 @@ package com.example.vok
 
 import com.github.mvysny.karibudsl.v8.AutoView
 import com.github.mvysny.karibudsl.v8.label
-import com.github.vok.security.AllowRoles
 import com.vaadin.navigator.View
 import com.vaadin.ui.VerticalLayout
 import com.vaadin.ui.themes.ValoTheme
+import eu.vaadinonkotlin.security.AllowRoles
 
 /**
  * Demoes a view intended for both users and admins.

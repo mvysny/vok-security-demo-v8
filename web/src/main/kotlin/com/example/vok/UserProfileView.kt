@@ -1,12 +1,12 @@
 package com.example.vok
 
-import com.github.vok.framework.Session
 import com.github.mvysny.karibudsl.v8.AutoView
 import com.github.mvysny.karibudsl.v8.label
-import com.github.vok.security.AllowAllUsers
 import com.vaadin.navigator.View
 import com.vaadin.ui.VerticalLayout
 import com.vaadin.ui.themes.ValoTheme
+import eu.vaadinonkotlin.security.AllowAllUsers
+import eu.vaadinonkotlin.vaadin8.Session
 
 /**
  * The view will simply show the profile of the currently logged in user. Therefore, we can simply allow all users to see this view, since

@@ -1,12 +1,12 @@
 package com.example.vok
 
 import com.github.mvysny.karibudsl.v8.*
-import com.github.vok.security.AllowAllUsers
 import com.vaadin.navigator.View
 import com.vaadin.shared.Version
 import com.vaadin.ui.Alignment
 import com.vaadin.ui.VerticalLayout
 import com.vaadin.ui.themes.ValoTheme
+import eu.vaadinonkotlin.security.AllowAllUsers
 
 /**
  * A view which can be seen by all logged-in users.

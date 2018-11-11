@@ -1,12 +1,11 @@
 package com.example.vok
 
-import com.github.vok.framework.Session
-import com.github.vok.security.simple.HasPassword
 import com.github.vokorm.Dao
 import com.github.vokorm.Entity
 import com.github.vokorm.findSpecificBy
 import com.vaadin.server.Page
-import com.vaadin.server.UserError
+import eu.vaadinonkotlin.security.simple.HasPassword
+import eu.vaadinonkotlin.vaadin8.Session
 import java.io.Serializable
 
 /**
