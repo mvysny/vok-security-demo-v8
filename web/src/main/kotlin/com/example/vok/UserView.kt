@@ -2,7 +2,9 @@ package com.example.vok
 
 import com.github.mvysny.karibudsl.v8.AutoView
 import com.github.mvysny.karibudsl.v8.label
+import com.github.mvysny.karibudsl.v8.verticalLayout
 import com.vaadin.navigator.View
+import com.vaadin.ui.Composite
 import com.vaadin.ui.VerticalLayout
 import com.vaadin.ui.themes.ValoTheme
 import eu.vaadinonkotlin.security.AllowRoles
@@ -12,11 +14,13 @@ import eu.vaadinonkotlin.security.AllowRoles
  */
 @AutoView
 @AllowRoles("user", "admin")
-class UserView : VerticalLayout(), View {
+class UserView : Composite(), View {
     init {
-        label("Important content for users") {
-            styleName = ValoTheme.LABEL_H1
+        verticalLayout {
+            label("Important content for users") {
+                styleName = ValoTheme.LABEL_H1
+            }
+            label("A page intended for users only. Only users and admins can see this view.")
         }
-        label("A page intended for users only. Only users and admins can see this view.")
     }
 }

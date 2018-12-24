@@ -36,11 +36,11 @@ dependencies {
     compile("com.h2database:h2:1.4.197")
 
     // Kotlin
-    compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    compile(kotlin("stdlib-jdk8"))
 
     // test
     testCompile("com.github.mvysny.dynatest:dynatest-engine:0.13")
-    testCompile("com.github.mvysny.kaributesting:karibu-testing-v8:1.0.0")
+    testCompile("com.github.mvysny.kaributesting:karibu-testing-v8:1.0.5")
 
     // heroku app runner
     staging("com.github.jsimone:webapp-runner:9.0.11.0")

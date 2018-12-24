@@ -2,7 +2,9 @@ package com.example.vok
 
 import com.github.mvysny.karibudsl.v8.AutoView
 import com.github.mvysny.karibudsl.v8.label
+import com.github.mvysny.karibudsl.v8.verticalLayout
 import com.vaadin.navigator.View
+import com.vaadin.ui.Composite
 import com.vaadin.ui.VerticalLayout
 import com.vaadin.ui.themes.ValoTheme
 import eu.vaadinonkotlin.security.AllowAllUsers
@@ -14,12 +16,14 @@ import eu.vaadinonkotlin.vaadin8.Session
  */
 @AutoView("profile")
 @AllowAllUsers
-class UserProfileView : VerticalLayout(), View {
+class UserProfileView : Composite(), View {
     init {
         val user: User = Session.loginManager.user!!
-        label("${user.username}'s profile") {
-            styleName = ValoTheme.LABEL_H1
+        verticalLayout {
+            label("${user.username}'s profile") {
+                styleName = ValoTheme.LABEL_H1
+            }
+            label("User name: ${user.username}")
         }
-        label("User name: ${user.username}")
     }
 }
