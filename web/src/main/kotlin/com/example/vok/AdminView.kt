@@ -17,6 +17,8 @@ import eu.vaadinonkotlin.vaadin8.sql2o.dataProvider
 class AdminView : Composite(), View {
     init {
         verticalLayout {
+            setSizeFull()
+
             label("Administration pages") {
                 styleName = ValoTheme.LABEL_H1
             }
