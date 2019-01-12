@@ -43,7 +43,7 @@ dependencies {
     testCompile("com.github.mvysny.kaributesting:karibu-testing-v8:1.0.5")
 
     // heroku app runner
-    staging("com.github.jsimone:webapp-runner:9.0.11.0")
+    staging("com.github.jsimone:webapp-runner:9.0.14.0")
 }
 
 // Heroku
