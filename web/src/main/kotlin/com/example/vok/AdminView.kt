@@ -15,23 +15,21 @@ import eu.vaadinonkotlin.vaadin8.sql2o.dataProvider
 @AutoView
 @AllowRoles("admin")
 class AdminView : Composite(), View {
-    init {
-        verticalLayout {
-            setSizeFull()
+    private val root = verticalLayout {
+        setSizeFull()
 
-            label("Administration pages") {
-                styleName = ValoTheme.LABEL_H1
-            }
-            grid<User>(caption = "Users", dataProvider = User.dataProvider) {
-                expandRatio = 1f; setSizeFull()
+        label("Administration pages") {
+            styleName = ValoTheme.LABEL_H1
+        }
+        grid<User>(caption = "Users", dataProvider = User.dataProvider) {
+            expandRatio = 1f; setSizeFull()
 
-                addColumnFor(User::id)
-                addColumnFor(User::username)
-                addColumnFor(User::roles)
-                addColumnFor(User::hashedPassword)
+            addColumnFor(User::id)
+            addColumnFor(User::username)
+            addColumnFor(User::roles)
+            addColumnFor(User::hashedPassword)
 
-                appendHeaderRow().generateFilterComponents(this, User::class)
-            }
+            appendHeaderRow().generateFilterComponents(this, User::class)
         }
     }
 }

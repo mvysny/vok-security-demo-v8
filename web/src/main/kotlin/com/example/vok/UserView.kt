@@ -15,12 +15,10 @@ import eu.vaadinonkotlin.security.AllowRoles
 @AutoView
 @AllowRoles("user", "admin")
 class UserView : Composite(), View {
-    init {
-        verticalLayout {
-            label("Important content for users") {
-                styleName = ValoTheme.LABEL_H1
-            }
-            label("A page intended for users only. Only users and admins can see this view.")
+    private val root = verticalLayout {
+        label("Important content for users") {
+            styleName = ValoTheme.LABEL_H1
         }
+        label("A page intended for users only. Only users and admins can see this view.")
     }
 }

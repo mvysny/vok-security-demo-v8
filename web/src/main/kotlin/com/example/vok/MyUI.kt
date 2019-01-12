@@ -10,10 +10,7 @@ import com.vaadin.server.Page
 import com.vaadin.server.UserError
 import com.vaadin.server.VaadinRequest
 import com.vaadin.shared.Position
-import com.vaadin.ui.Alignment
-import com.vaadin.ui.Notification
-import com.vaadin.ui.UI
-import com.vaadin.ui.VerticalLayout
+import com.vaadin.ui.*
 import com.vaadin.ui.themes.ValoTheme
 import eu.vaadinonkotlin.security.AccessRejectedException
 import eu.vaadinonkotlin.vaadin8.Session
@@ -102,8 +99,8 @@ class MyUI : UI() {
  * A full-screen login view which shows the [loginForm]. On successful login saves the user to the session and reloads
  * the page, this re-creates the UI instance which will now draw the proper screen contents (the ValoMenu)
  */
-class LoginView : VerticalLayout() {
-    init {
+class LoginView : Composite() {
+    private val root = verticalLayout {
         setSizeFull()
         loginForm("VoK Security Demo") {
             alignment = Alignment.MIDDLE_CENTER
