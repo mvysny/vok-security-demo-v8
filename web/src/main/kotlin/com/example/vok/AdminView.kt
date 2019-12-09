@@ -3,11 +3,10 @@ package com.example.vok
 import com.github.mvysny.karibudsl.v8.*
 import com.vaadin.navigator.View
 import com.vaadin.ui.Composite
-import com.vaadin.ui.VerticalLayout
 import com.vaadin.ui.themes.ValoTheme
 import eu.vaadinonkotlin.security.AllowRoles
 import eu.vaadinonkotlin.vaadin8.generateFilterComponents
-import eu.vaadinonkotlin.vaadin8.sql2o.dataProvider
+import eu.vaadinonkotlin.vaadin8.vokdb.dataProvider
 
 /**
  * The Administration view which only administrators may access. The administrator should be able to see/edit the list of users.
