@@ -22,9 +22,9 @@ dependencies {
     // logging
     // currently we are logging through the SLF4J API to LogBack. See logback.xml file for the logger configuration
     compile("ch.qos.logback:logback-classic:1.2.3")
-    compile("org.slf4j:slf4j-api:1.7.28")
+    compile("org.slf4j:slf4j-api:1.7.30")
     // this will configure Vaadin to log to SLF4J
-    compile("org.slf4j:jul-to-slf4j:1.7.28")
+    compile("org.slf4j:jul-to-slf4j:1.7.30")
 
     // workaround until https://youtrack.jetbrains.com/issue/IDEA-178071 is fixed
     compile("com.vaadin:vaadin-themes:${properties["vaadin8_version"]}")
@@ -33,7 +33,7 @@ dependencies {
     providedCompile("javax.servlet:javax.servlet-api:3.1.0")
 
     // db
-    compile("org.flywaydb:flyway-core:6.1.0")
+    compile("org.flywaydb:flyway-core:6.2.4")
     compile("com.h2database:h2:1.4.200")
 
     // Kotlin
@@ -41,7 +41,7 @@ dependencies {
 
     // test
     testCompile("com.github.mvysny.dynatest:dynatest-engine:0.15")
-    testCompile("com.github.mvysny.kaributesting:karibu-testing-v8:1.1.17")
+    testCompile("com.github.mvysny.kaributesting:karibu-testing-v8:1.1.19")
 
     // heroku app runner
     staging("com.github.jsimone:webapp-runner:9.0.27.1")
