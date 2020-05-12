@@ -24,7 +24,7 @@ data class User(override var id: Long? = null,
         /**
          * Finds user by his [username]. If there is no such user, returns `null`.
          */
-        fun findByUsername(username: String): User? = findSpecificBy { User::username eq username }
+        fun findByUsername(username: String): User? = findOneBy { User::username eq username }
     }
 }
 
