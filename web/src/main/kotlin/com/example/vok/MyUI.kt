@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory
 @PushStateNavigation
 class MyUI : UI() {
 
-    override fun init(request: VaadinRequest?) {
+    override fun init(request: VaadinRequest) {
         if (!Session.loginManager.isLoggedIn) {
             // If no user is logged in, then simply show the LoginView (a full-screen login form) and bail out.
             // When the user logs in, we will simply reload the page, which recreates the UI instance; since the user is stored in a session
