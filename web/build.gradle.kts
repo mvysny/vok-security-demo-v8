@@ -34,7 +34,7 @@ dependencies {
     providedCompile("javax.servlet:javax.servlet-api:3.1.0")
 
     // db
-    compile("com.zaxxer:HikariCP:3.4.2")
+    compile("com.zaxxer:HikariCP:3.4.5")
     compile("org.flywaydb:flyway-core:6.2.4")
     compile("com.h2database:h2:1.4.200")
 
@@ -42,8 +42,8 @@ dependencies {
     compile(kotlin("stdlib-jdk8"))
 
     // test
-    testImplementation("com.github.mvysny.dynatest:dynatest-engine:0.16")
-    testImplementation("com.github.mvysny.kaributesting:karibu-testing-v8:1.1.29")
+    testImplementation("com.github.mvysny.dynatest:dynatest-engine:0.17")
+    testImplementation("com.github.mvysny.kaributesting:karibu-testing-v8:1.1.30")
 
     // heroku app runner
     staging("com.heroku:webapp-runner:9.0.31.0")
