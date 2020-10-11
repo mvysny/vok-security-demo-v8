@@ -5,7 +5,6 @@ import com.github.mvysny.dynatest.DynaTest
 import com.github.mvysny.dynatest.expectThrows
 import com.github.mvysny.karibudsl.v8.autoDiscoverViews
 import com.github.mvysny.karibudsl.v8.navigateToView
-import com.github.vokorm.deleteAll
 import com.vaadin.server.Page
 import eu.vaadinonkotlin.security.AccessRejectedException
 import eu.vaadinonkotlin.vaadin8.LoginForm

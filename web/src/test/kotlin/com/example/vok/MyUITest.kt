@@ -3,13 +3,10 @@ package com.example.vok
 import com.github.mvysny.kaributesting.v8.*
 import com.github.mvysny.dynatest.DynaTest
 import com.github.mvysny.karibudsl.v8.autoDiscoverViews
-import com.github.vokorm.deleteAll
-import com.vaadin.server.ErrorMessage
 import com.vaadin.ui.Button
 import com.vaadin.ui.PasswordField
 import com.vaadin.ui.TextField
 import eu.vaadinonkotlin.vaadin8.Session
-import org.jsoup.Jsoup
 import kotlin.test.expect
 
 /**
@@ -41,9 +38,3 @@ class MyUITest : DynaTest({
         _get<WelcomeView>()
     }
 })
-
-/**
- * Unescapes [ErrorMessage.getFormattedHtmlMessage] and converts it to sane string. E.g.
- * `The&#32;user&#32;does&#32;not&#32;exist` is converted to `The user does not exist`.
- */
-val ErrorMessage.message: String get() = Jsoup.parse(formattedHtmlMessage).text()

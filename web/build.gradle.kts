@@ -42,7 +42,7 @@ dependencies {
     compile(kotlin("stdlib-jdk8"))
 
     // test
-    testImplementation("com.github.mvysny.dynatest:dynatest-engine:0.17")
+    testImplementation("com.github.mvysny.dynatest:dynatest-engine:0.19")
     testImplementation("com.github.mvysny.kaributesting:karibu-testing-v8:1.2.5")
 
     // heroku app runner

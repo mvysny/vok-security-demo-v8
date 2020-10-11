@@ -2,7 +2,6 @@ package com.example.vok
 
 import com.github.vokorm.KEntity
 import com.github.vokorm.findOneBy
-import com.github.vokorm.findSpecificBy
 import com.gitlab.mvysny.jdbiorm.Dao
 import com.vaadin.server.Page
 import eu.vaadinonkotlin.security.simple.HasPassword
@@ -10,7 +9,7 @@ import eu.vaadinonkotlin.vaadin8.Session
 import java.io.Serializable
 
 /**
- * Represents an user. Stored in a database; see [Entity] and [Accessing Databases](http://www.vaadinonkotlin.eu/databases.html) for more details.
+ * Represents an user. Stored in a database; see [KEntity] and [Accessing Databases](http://www.vaadinonkotlin.eu/databases.html) for more details.
  * Implements the [HasPassword] helper interface which provides password hashing functionality. Remember to set the
  * password via [HasPassword.setPassword] and verify the password via [HasPassword.passwordMatches].
  * @property username user name, unique
