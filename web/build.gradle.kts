@@ -35,7 +35,7 @@ dependencies {
 
     // db
     compile("com.zaxxer:HikariCP:3.4.5")
-    compile("org.flywaydb:flyway-core:6.2.4")
+    compile("org.flywaydb:flyway-core:7.1.1")
     compile("com.h2database:h2:1.4.200")
 
     // Kotlin
@@ -43,7 +43,7 @@ dependencies {
 
     // test
     testImplementation("com.github.mvysny.dynatest:dynatest-engine:0.19")
-    testImplementation("com.github.mvysny.kaributesting:karibu-testing-v8:1.2.5")
+    testImplementation("com.github.mvysny.kaributesting:karibu-testing-v8:1.2.6")
 
     // heroku app runner
     staging("com.heroku:webapp-runner:9.0.36.1")
