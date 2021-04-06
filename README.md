@@ -7,19 +7,21 @@
 Demonstrates the security aspect of the Vaadin-on-Kotlin framework. For a general information on
 VoK Security please head to the [vok-security module documentation](https://github.com/mvysny/vaadin-on-kotlin/blob/master/vok-security/README.md).
 
+**Deprecated**: uses old VoK version and Vaadin 8. Please see the [vok-security-demo](https://github.com/mvysny/vok-security-demo) project.
+
 ## Getting Started
 
 To quickly start the app, make sure that you have Java 8 JDK installed. Then, just type this into your terminal:
 
 ```bash
-git clone https://github.com/mvysny/vok-security-demo
+git clone https://github.com/mvysny/vok-security-demo-v8
 cd vok-security-demo
 ./gradlew build web:appRun
 ```
 
 The app will be running on [http://localhost:8080/](http://localhost:8080/).
 
-The app is running live on Heroku at [https://vok-sec-demo.herokuapp.com](https://vok-sec-demo.herokuapp.com).
+The app is running live on Heroku at [https://vok-sec-demo-v8.herokuapp.com](https://vok-sec-demo-v8.herokuapp.com).
 
 ## About the application
 
